@@ -1,0 +1,26 @@
+quick doc
+	1. basics
+		each line can be:
+		- <instruction>
+		- <instruction> <operand>
+		- <instruction> <operand>,<operand>
+
+	2. <instruction> listing
+		name	opcode	desc. (name a, b)
+		add		2		a += b
+		jmp		4		jmps to a
+		mov		1		a = b
+		nop		0		
+		sub		3		a -= b
+					
+	3. <operand> listing
+		name				value		desc									examples									note
+		OPERAND_NA			0			Not all instructions have 2 operands												
+		OPERAND_REG			1			full list of registers: 				r0 ... r9, dp, sp, bp, ip, cf					
+		OPERAND_VAL			3			(9 - 32bit integers) 					0x14Aa, 4132, -424, -0XAa4
+		OPERAND_VAL_8		4			(0 - 8bit integers) 	 				0, 0x4a, 0xff, 255
+		OPERAND_ADDR		5			data at value.  						&0x00000000, &100
+		OPERAND_ADDR_REG	6			32bit data at value in reg. 			&r0, &pc, &R4
+		OPERAND_LABEL		7			gets the offset to the label. 	 		$main, $std.strlen, $std.net.http.get
+		OPERAND_ARG			8			shortcut to the stack					arg0, arg1, arg2 ... arg9					required. no &sp+4,&bp-8,etc
+		OPERAND_ADDR_REG_8	9			8bit data at value in reg				^r0, ^r1, ^dp
